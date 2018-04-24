@@ -22,7 +22,3 @@ could end up executing this:
     C:\myproject\subproject> "C:\myproject\gradlew.bat" build --refresh-dependencies
 
 To use it, unpack it somewhere and make sure the `gradle-wrapper-delegator/bin` directory is in your PATH before the real Gradle installation.
-
-## Limitations
-
-* Currently only comes with a Windows script. Pull requests for a Linux shell script are welcome :)

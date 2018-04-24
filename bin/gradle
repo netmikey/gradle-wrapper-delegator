@@ -1,0 +1,36 @@
+#!/bin/bash
+
+###########################################################################
+#
+#  Gradlew search and delegate script for macOS / Linux
+#  ( drop-in replacement for the gradle start script )
+#
+###########################################################################
+
+STARTDIR="`pwd`"
+LASTDIR=
+GRADLEW=
+
+while [[ "$GRADLEW" = "" && "$LASTDIR" != "`pwd`" ]]; do
+    if [ -f "gradlew" ]; then
+        # echo "`pwd`: gradlew file exists"
+        GRADLEW="`pwd`/gradlew"
+    else
+        # echo "`pwd`: : gradlew file doesn't exist"
+        LASTDIR="`pwd`"
+        cd ..
+    fi
+done
+
+if [[ "$GRADLEW" = "" ]]; then
+    echo "Cannot find gradlew in any parent directory."
+    exit 1
+fi
+
+# Execute Gradle
+# echo "gradlew found: $GRADLEW"
+cd "$STARTDIR"
+# echo "exec \"$GRADLEW\" \"$@\""
+
+"$GRADLEW" "$@"
+exit $?
